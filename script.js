@@ -9,7 +9,7 @@ function iniciarSesion() {
         .get()
         .then((querySnapshot) => {
         if (!querySnapshot.empty) {
-            mensaje.textContent = "Login exitoso. Redirigiendo...";
+            mensaje.textContent = "Ingreso exitoso. Redirigiendo...";
             mensaje.style.color = "green";
 
             setTimeout(() => {
