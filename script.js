@@ -9,8 +9,12 @@ function iniciarSesion() {
         .get()
         .then((querySnapshot) => {
         if (!querySnapshot.empty) {
-            mensaje.textContent = "Login exitoso";
+            mensaje.textContent = "Login exitoso. Redirigiendo...";
             mensaje.style.color = "green";
+
+            setTimeout(() => {
+            window.location.href = "index.html";
+            }, 1000);
         } else {
             mensaje.textContent = "Usuario o contraseña incorrectos";
             mensaje.style.color = "red";
@@ -18,7 +22,7 @@ function iniciarSesion() {
         })
         .catch((error) => {
         console.error("Error al iniciar sesión:", error);
-        mensaje.textContent = "Ocurrió un error al intentar iniciar sesión";
+        mensaje.textContent = "Error al intentar iniciar sesión";
         mensaje.style.color = "orange";
-    });
+        });
 }
