@@ -1,17 +1,30 @@
-function guardarUsuario() {
-  const nombre = document.getElementById("nombre").value;
-  const email = document.getElementById("email").value;
-  const edad = parseInt(document.getElementById("edad").value);
+function registrarUsuario() {
+  const usuario = document.getElementById("usuario").value.trim();
+  const contrasena = document.getElementById("contrasena").value;
 
+  // Validar longitud del usuario
+  if (usuario.length === 0 || usuario.length > 16) {
+    alert("El usuario debe tener entre 1 y 16 caracteres.");
+    return;
+  }
+
+  // Validar contraseña: solo letras y números
+  const regex = /^[a-zA-Z0-9]+$/;
+  if (!regex.test(contrasena)) {
+    alert("La contraseña solo puede contener letras y números.");
+    return;
+  }
+
+  // Guardar en Firestore
   db.collection("usuarios").add({
-    nombre: nombre,
-    email: email,
-    edad: edad
+    usuario: usuario,
+    contrasena: contrasena
   })
   .then((docRef) => {
-    console.log("Usuario guardado con ID:", docRef.id);
+    console.log("Usuario registrado con ID:", docRef.id);
+    alert("Registro exitoso");
   })
   .catch((error) => {
-    console.error("Error al guardar usuario:", error);
+    console.error("Error al registrar:", error);
   });
 }

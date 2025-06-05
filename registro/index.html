@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mi Proyecto Firebase</title>
+  <title>Registro de Usuario</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
 </head>
 <body>
-  <h1>Formulario</h1>
-  <input type="text" id="nombre" placeholder="Nombre">
-  <input type="email" id="email" placeholder="Correo">
-  <input type="number" id="edad" placeholder="Edad">
-  <button onclick="guardarUsuario()">Guardar</button>
+  <h1>Registro</h1>
+
+  <input type="text" id="usuario" placeholder="Usuario (máx 16)" maxlength="16"><br>
+  <input type="password" id="contrasena" placeholder="Contraseña"><br>
+  <button onclick="registrarUsuario()">Registrar</button>
 
   <script src="firebase-config.js"></script>
   <script src="app.js"></script>
