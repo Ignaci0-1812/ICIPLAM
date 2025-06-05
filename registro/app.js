@@ -1,6 +1,6 @@
 function registrarUsuario() {
   const usuario = document.getElementById("usuario").value.trim();
-  const contrasena = document.getElementById("contrasena").value;
+  const password = document.getElementById("password").value;
 
   // Validar longitud del usuario
   if (usuario.length === 0 || usuario.length > 16) {
@@ -10,7 +10,7 @@ function registrarUsuario() {
 
   // Validar contraseña: solo letras y números
   const regex = /^[a-zA-Z0-9]+$/;
-  if (!regex.test(contrasena)) {
+  if (!regex.test(password)) {
     alert("La contraseña solo puede contener letras y números.");
     return;
   }
@@ -18,7 +18,7 @@ function registrarUsuario() {
   // Guardar en Firestore
   db.collection("usuarios").add({
     usuario: usuario,
-    contrasena: contrasena
+    password: password
   })
   .then((docRef) => {
     console.log("Usuario registrado con ID:", docRef.id);
