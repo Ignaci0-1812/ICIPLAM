@@ -1,14 +1,24 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+function iniciarSesion() {
+    const usuarioIngresado = document.getElementById("username").value.trim();
+    const contrasenaIngresada = document.getElementById("password").value.trim();
+    const mensaje = document.getElementById("mensajeLogin");
 
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let errorMessage = document.getElementById("error-message");
-
-    if (username === "admin" && password === "1234") {
-        alert("¡Bienvenido, " + username + "!");
-        window.location.href = "dashboard.html"; // Redirigir a otra página
-    } else {
-        errorMessage.textContent = "Usuario o contraseña incorrectos";
-    }
-});
+    db.collection("usuarios")
+        .where("usuario", "==", usuarioIngresado)
+        .where("password", "==", contrasenaIngresada)
+        .get()
+        .then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+            mensaje.textContent = "Login exitoso";
+            mensaje.style.color = "green";
+        } else {
+            mensaje.textContent = "Usuario o contraseña incorrectos";
+            mensaje.style.color = "red";
+        }
+        })
+        .catch((error) => {
+        console.error("Error al iniciar sesión:", error);
+        mensaje.textContent = "Ocurrió un error al intentar iniciar sesión";
+        mensaje.style.color = "orange";
+    });
+}

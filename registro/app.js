@@ -1,6 +1,6 @@
 function registrarUsuario() {
   const usuario = document.getElementById("usuario").value.trim();
-  const password = document.getElementById("contrasena").value;
+  const password = document.getElementById("contrasena").value.trim();
 
   if (usuario.length === 0 || usuario.length > 16) {
     alert("El usuario debe tener entre 1 y 16 caracteres.");
@@ -15,7 +15,7 @@ function registrarUsuario() {
 
   db.collection("usuarios").add({
     usuario: usuario,
-    password: password 
+    password: password
   })
   .then((docRef) => {
     console.log("Usuario registrado con ID:", docRef.id);
