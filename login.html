@@ -4,11 +4,6 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://www.gstatic.com/firebasejs/14.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/14.6.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/14.6.0/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="login.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -20,5 +15,37 @@
             <p id="mensajeLogin"></p>
         </form>
     </div>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCszb01ppFx3-lvMGYHjBNgEh_5oi3UXkA",
+            authDomain: "proyecto-d910f.firebaseapp.com",
+            projectId: "proyecto-d910f",
+            storageBucket: "proyecto-d910f.firebasestorage.app",
+            messagingSenderId: "159534098700",
+            appId: "1:159534098700:web:2757ec1bb82fdb44818129"
+        };
+
+        var scriptApp = document.createElement("script");
+        scriptApp.src = "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        document.head.appendChild(scriptApp);
+
+        var scriptAuth = document.createElement("script");
+        scriptAuth.src = "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        document.head.appendChild(scriptAuth);
+
+        var scriptFirestore = document.createElement("script");
+        scriptFirestore.src = "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        document.head.appendChild(scriptFirestore);
+
+        scriptFirestore.onload = function () {
+            console.log("🔥 Firebase cargado correctamente.");
+            firebase.initializeApp(firebaseConfig);
+            window.auth = firebase.auth();
+            window.db = firebase.firestore();
+        };
+    </script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
