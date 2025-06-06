@@ -1,4 +1,3 @@
-// Asegurar que Firebase ya está cargado
 if (typeof firebase === "undefined") {
     console.error("Firebase no está definido. Revisa el orden de los scripts en login.html.");
 } else {
